@@ -1,3 +1,3 @@
-SolidusRazorpay::Engine.routes.draw do
+SolidusRazorpay::Engine.add_routes do
   resources :razorpay, only: :create
 end
