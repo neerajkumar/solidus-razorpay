@@ -1,6 +1,7 @@
-require "solidus_razorpay/version"
+require 'solidus_core'
+require 'solidus_razorpay/engine'
+require 'razorpay'
 
 module SolidusRazorpay
   class Error < StandardError; end
-  # Your code goes here...
 end
