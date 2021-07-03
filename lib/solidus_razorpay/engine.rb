@@ -18,7 +18,7 @@ module SolidusRazorpay
     end
 
     initializer 'solidus.gateway.payment_methods', after: 'solidus.register.payment_methods' do |app|
-      app.config.solidus.payment_methods << Solidus::Gateway::RazorpayGateway
+      app.config.spree.payment_methods << Solidus::Gateway::RazorpayGateway
     end
 
     config.to_prepare &method(:activate).to_proc
