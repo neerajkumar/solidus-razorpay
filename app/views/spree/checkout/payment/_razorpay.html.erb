@@ -27,7 +27,7 @@
           });
           $.ajax({
             type: 'POST',
-            url: "/razorpay",
+            url: "/solidus_razorpay/razorpay",
             data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
             dataType: 'html'
           }).done(function(data){
