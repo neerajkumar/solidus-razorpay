@@ -1,5 +1,5 @@
 module SolidusRazorpay
-  class RazorpayController < ::StoreController
+  class RazorpayController
 
     skip_before_action :verify_authenticity_token
 
