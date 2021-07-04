@@ -1,6 +1,5 @@
 module SolidusRazorpay
   class Engine < Rails::Engine
-    include SolidusSupport::EngineExtensions
     require 'solidus_core'
     isolate_namespace SolidusRazorpay
     engine_name 'solidus_razorpay'
