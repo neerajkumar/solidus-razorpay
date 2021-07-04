@@ -20,6 +20,12 @@ module SolidusRazorpay
         end
       end
 
+      def mount_engine
+        insert_into_file File.join('config', 'routes.rb'), after: "Rails.application.routes.draw do\n" do
+          "mount SolidusRazorpay::Engine, at: '/solidus_razorpay'\n"
+        end
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=solidus_razorpay'
       end
