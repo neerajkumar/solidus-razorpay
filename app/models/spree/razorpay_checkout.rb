@@ -1,4 +1,4 @@
-module SolidusRazorpay
+module Spree
   class RazorpayCheckout < ApplicationRecord
   end
 end
