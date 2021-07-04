@@ -1,3 +1,3 @@
-SolidusRazorpay::Engine.routes.draw do
-  resource :razorpay, only: [:create]
+Spree::Core::Engine.add_routes do
+  resources :razorpay, only: :create
 end
