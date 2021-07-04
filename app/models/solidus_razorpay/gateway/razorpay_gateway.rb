@@ -1,4 +1,4 @@
-module Spree
+module SolidusRazorpay
   class Gateway::RazorpayGateway < Gateway
     preference :key_id, :string
     preference :key_secret, :string

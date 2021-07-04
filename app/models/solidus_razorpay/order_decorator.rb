@@ -26,7 +26,7 @@ Spree::Order.class_eval do
 
   def self.payment(order, payment_object, payment_method)
     order.payments.create!(
-      source: Spree::RazorpayCheckout.create(
+      source: SolidusRazorpay::RazorpayCheckout.create(
         order_id: order.id,
         razorpay_payment_id: payment_object.id,
         status: payment_object.status,
