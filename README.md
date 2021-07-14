@@ -1,6 +1,6 @@
 # SolidusRazorpay
 
-[![Build Status](https://travis-ci.org/neerajkumar/solidus-razorpay.svg?branch=master)](https://travis-ci.org/neerajkumar/solidus-razorpay)
+[![Build Status](https://travis-ci.com/neerajkumar/solidus-razorpay.svg?branch=master)](https://travis-ci.org/neerajkumar/solidus-razorpay)
 
 Razorpay payment gateway integration for Solidus
 
