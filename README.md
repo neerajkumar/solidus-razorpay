@@ -20,9 +20,22 @@ Or install it yourself as:
 
     $ gem install solidus_razorpay
 
-## Usage
+Add migrations from extension:
 
-TODO: Write usage instructions here
+     $ rails g spree_razorpay:install
+
+Restart your server
+
+Add new payment method with provider
+
+     Razorpay gateway
+
+Get **Key ID** and **Key Secret** from your razorpay sandbox account. If you don't have it you can sign up and get from
+[https://dashboard.razorpay.com/#/app/keys](https://dashboard.razorpay.com/#/app/keys).
+
+## Demo
+
+<img src="app/assets/images/solidus-razorpay.gif" alt="Solidus Razorpay Demo" width="740" height="390" class='img-responsive'>
 
 ## Development
 
