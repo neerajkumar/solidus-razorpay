@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 gem 'razorpay'
 gem 'solidus', github: 'solidusio/solidus'
-gem 'byebug'
 
 gem 'sassc-rails'
 
@@ -15,6 +14,7 @@ group :test do
   gem 'spree_extension'
   gem 'spree_frontend'
   gem 'rails-controller-testing'
+  gem 'byebug'
   unless ENV['WITHOUT_SPREE_AUTH_DEVISE'] == 'true'
     gem 'spree_auth_devise'
   end

@@ -15,8 +15,8 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/order_walkthrough'
 
-# Requires factories defined in lib/spree_razorpay/factories.rb
-require 'spree_razorpay/factories'
+# Requires factories defined in lib/solidus_razorpay/factories.rb
+require 'solidus_razorpay/factories'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
