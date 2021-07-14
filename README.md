@@ -22,7 +22,7 @@ Or install it yourself as:
 
 Add migrations from extension:
 
-     $ rails g spree_razorpay:install
+     $ rails g solidus_razorpay:install
 
 Restart your server
 
