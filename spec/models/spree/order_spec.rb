@@ -21,13 +21,13 @@ describe Spree::Order, type: :model do
 
     it 'returns amount in paise' do
       expect(subject).to_not be_nil
-      amount_in_paise = (order.amount.to_f * 100).to_i
+      amount_in_paise = (order.total.to_f * 100).to_i
       expect(subject).to eq(amount_in_paise)
     end
   end
 
   describe '.process_razorpayment' do
-    subject { Spree::Order.process_razorpayment(params, order) }
+    subject { Spree::OrderDecorator.process_razorpayment(params, order) }
 
     context 'when payment is successful' do
       before do

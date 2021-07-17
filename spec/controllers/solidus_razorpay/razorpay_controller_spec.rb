@@ -3,6 +3,8 @@ require 'shared/new_razorpay_payment'
 
 describe SolidusRazorpay::RazorpayController, type: :controller do
 
+  routes { SolidusRazorpay::Engine.routes }
+
   let(:razorpay_payment) { create(:razorpay_payment) }
   let!(:store) { create(:store, default: true) }
 
@@ -37,8 +39,8 @@ describe SolidusRazorpay::RazorpayController, type: :controller do
         allow(Razorpay::Payment).to receive(:fetch).twice.and_return(@razorpay_payment_1, razorpay_payment_2)
       end
 
-      it 'returns 200 status' do
-        expect(subject).to have_http_status(200)
+      it 'returns 204 status' do
+        expect(subject).to have_http_status(204)
       end
 
       it 'assigns instance variables' do
@@ -46,7 +48,7 @@ describe SolidusRazorpay::RazorpayController, type: :controller do
         expect(assigns(:message)).to eq(Spree.t(:order_processed_successfully))
         expect(assigns(:current_order)).to be_nil
         expect(assigns(:error)).to be_falsey
-        expect(assigns(:redirect_path)).to eq(order_path(order))
+        expect(assigns(:redirect_path)).to eq(spree.order_path(order))
       end
     end
 
@@ -59,8 +61,8 @@ describe SolidusRazorpay::RazorpayController, type: :controller do
         allow(Razorpay::Payment).to receive(:fetch).twice.and_return(@razorpay_payment_1, razorpay_payment_2)
       end
 
-      it 'returns 200 status' do
-        expect(subject).to have_http_status(200)
+      it 'returns 204 status' do
+        expect(subject).to have_http_status(204)
       end
 
       it 'fails the processing of payment' do
@@ -68,7 +70,7 @@ describe SolidusRazorpay::RazorpayController, type: :controller do
         expect(assigns(:order).reload.payment_state).to eq('failed')
         expect(assigns(:error)).to be_truthy
         expect(assigns(:message)).to eq('There was an error processing your payment')
-        expect(assigns(:redirect_path)).to eq(checkout_state_path(order.state))
+        expect(assigns(:redirect_path)).to eq(spree.checkout_state_path(order.state))
       end
     end
   end

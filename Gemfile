@@ -15,6 +15,7 @@ group :test do
   gem 'spree_frontend'
   gem 'rails-controller-testing'
   gem 'byebug'
+  gem 'spree'
   unless ENV['WITHOUT_SPREE_AUTH_DEVISE'] == 'true'
     gem 'spree_auth_devise'
   end

@@ -1,17 +1,19 @@
-Spree::Order.class_eval do
-
-  checkout_flow do
-    go_to_state :address
-    go_to_state :delivery
-    go_to_state :payment
-    go_to_state :complete
-  end
+module Spree::OrderDecorator
 
   def amount_in_paise
     (total.to_f * 100).to_i
   end
 
   class << self
+    def prepended(base)
+      base.checkout_flow do
+        go_to_state :address
+        go_to_state :delivery
+        go_to_state :payment
+        go_to_state :complete
+      end
+    end
+
     def process_razorpayment(params, order)
       setup_razorpay(payment_method(params[:payment_method_id]))
       razorpay_payment_object = Razorpay::Payment.fetch(params[:razorpay_payment_id])
@@ -65,3 +67,4 @@ Spree::Order.class_eval do
 
   private_class_method :setup_razorpay, :payment, :source, :payment_authorized?, :payment_method
 end
+::Spree::Order.prepend(Spree::OrderDecorator)

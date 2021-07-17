@@ -4,7 +4,7 @@ module SolidusRazorpay
     skip_before_action :verify_authenticity_token
 
     def create
-      response_status = Spree::Order.process_razorpayment(razorpay_params, order)
+      response_status = Spree::OrderDecorator.process_razorpayment(razorpay_params, order)
       if response_status == 'captured'
         order.next!
         @message = Spree.t(:order_processed_successfully)
@@ -14,7 +14,7 @@ module SolidusRazorpay
         @error = false
         @redirect_path = spree.order_path(order)
       else
-        order.update_attributes(payment_state: 'failed')
+        order.update_attribute(:payment_state, 'failed')
         @error = true
         @message = 'There was an error processing your payment'
         @redirect_path = spree.checkout_state_path(order.state)
