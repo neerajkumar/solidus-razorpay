@@ -1,6 +1,6 @@
-class CreateSpreeRazorpayCheckouts < ActiveRecord::Migration[6.0]
+class CreateSolidusRazorpayCheckouts < ActiveRecord::Migration[6.0]
   def change
-    create_table :spree_razorpay_checkouts do |t|
+    create_table :solidus_razorpay_checkouts do |t|
       t.string :order_id
       t.string :razorpay_payment_id
       t.string :status

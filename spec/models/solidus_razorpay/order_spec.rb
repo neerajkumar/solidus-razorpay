@@ -27,7 +27,7 @@ describe Spree::Order, type: :model do
   end
 
   describe '.process_razorpayment' do
-    subject { Spree::OrderDecorator.process_razorpayment(params, order) }
+    subject { SolidusRazorpay::OrderDecorator.process_razorpayment(params, order) }
 
     context 'when payment is successful' do
       before do
@@ -41,8 +41,8 @@ describe Spree::Order, type: :model do
 
       it 'makes the payment and returns status' do
         expect { subject }.to change(Spree::Payment, :count).by(1)
-        expect(Spree::RazorpayCheckout.count).to eq(1)
-        expect(Spree::RazorpayCheckout.last.status).to eq('authorized')
+        expect(SolidusRazorpay::Checkout.count).to eq(1)
+        expect(SolidusRazorpay::Checkout.last.status).to eq('authorized')
         expect(subject).to eq('captured')
         expect(order.payments.last.response_code).to eq('captured')
       end

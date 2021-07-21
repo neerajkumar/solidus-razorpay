@@ -1,5 +1,5 @@
-class Spree
-  class Gateway::RazorpayGateway < Gateway
+module SolidusRazorpay
+  class Gateway < ::Spree::Gateway
     preference :key_id, :string
     preference :key_secret, :string
     preference :merchant_name, :string

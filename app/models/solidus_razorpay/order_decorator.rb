@@ -1,4 +1,4 @@
-module Spree::OrderDecorator
+module SolidusRazorpay::OrderDecorator
 
   def amount_in_paise
     (total.to_f * 100).to_i
@@ -50,7 +50,7 @@ module Spree::OrderDecorator
     end
 
     def source(order, payment_object)
-      Spree::RazorpayCheckout.create(
+      SolidusRazorpay::Checkout.create(
         order_id: order.id,
         razorpay_payment_id: payment_object.id,
         status: payment_object.status,
@@ -67,4 +67,4 @@ module Spree::OrderDecorator
 
   private_class_method :setup_razorpay, :payment, :source, :payment_authorized?, :payment_method
 end
-::Spree::Order.prepend(Spree::OrderDecorator)
+::Spree::Order.prepend(SolidusRazorpay::OrderDecorator)
