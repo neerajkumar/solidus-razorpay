@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :razorpay_payment, class: Spree::PaymentMethod do
-    type { 'SolidusRazorpay::Gateway' }
+    type { 'RazorpayGateway' }
     name { 'Razorpay (For Wallet, Netbanking, Credit Card and UPI)' }
     description { 'Razorpay Payment Gateway' }
     active { true }
