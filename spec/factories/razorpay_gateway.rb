@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :razorpay_gateway, class: RazorpayGateway do
-    name { 'RazorpayGateway' }
+  factory :razorpay_gateway, class: SolidusRazorpay::Gateway do
+    name { 'SolidusRazorpay::Gateway' }
   end
 end

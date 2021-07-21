@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RazorpayGateway, type: :model do
+describe SolidusRazorpay::Gateway, type: :model do
 
   let(:gateway) { create(:razorpay_gateway) }
 
