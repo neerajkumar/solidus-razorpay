@@ -2,7 +2,7 @@ module SolidusRazorpay
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
-      class_option :auto_run_migrations, :type => :boolean, :default => false
+      class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_javascripts
         append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require solidus/frontend/jquery-1.12.4.min.js\n"

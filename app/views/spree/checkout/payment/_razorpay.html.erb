@@ -9,25 +9,25 @@
 <div id='blockUI-message' style='display: none;'>
   <h1>
     <b>HOLDON!</b>
-    While we connect you back to merchant's site
+    While we connect you back to merchant's site.
   </h1>
 </div>
-  
-<script type="text/javascript">
+
+<script type='text/javascript'>
   $(document).ready(function(){
-    $("#razorpay").click(function() {
+    $('#razorpay').click(function() {
       var options = {
-        "key": "<%= payment_method.preferences[:key_id] %>",
-        "amount": "<%= current_order.amount_in_paise %>",
+        'key': "<%= payment_method.preferences[:key_id] %>",
+        'amount': "<%= current_order.amount_in_paise %>",
         'name': "<%= payment_method.preferences[:merchant_name] %>",
         'description': "<%= payment_method.preferences[:merchant_description] %>",
-        "handler": function (response){
+        'handler': function (response){
           $(document).ajaxStart(function() {
             $.blockUI({ message: $('#blockUI-message') });
           });
           $.ajax({
             type: 'POST',
-            url: "/solidus_razorpay/razorpay",
+            url: '/solidus_razorpay/razorpay',
             data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
             dataType: 'html'
           }).done(function(data){
@@ -37,15 +37,15 @@
             }, 5000);
           });
         },
-        "prefill": {
-            "name": "<%= spree_current_user.try(:email) %>",
-            "email": "<%= spree_current_user.try(:email) %>"
+        'prefill': {
+            'name': "<%= spree_current_user.try(:email) %>",
+            'email': "<%= spree_current_user.try(:email) %>"
         },
-        "notes": {
-            "address": "<%= payment_method.preferences[:merchant_address] %>"
+        'notes': {
+            'address': "<%= payment_method.preferences[:merchant_address] %>"
         },
-        "theme": {
-            "color": "<%= payment_method.preferences[:theme_color] %>"
+        'theme': {
+            'color': "<%= payment_method.preferences[:theme_color] %>"
         }
       };
       var rzp1 = new Razorpay(options);

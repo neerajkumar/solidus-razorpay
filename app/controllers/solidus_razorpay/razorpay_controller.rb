@@ -20,7 +20,7 @@ module SolidusRazorpay
         @redirect_path = spree.checkout_state_path(order.state)
       end
     rescue Spree::Core::GatewayError, StateMachine::InvalidTransition => ge
-      error_message = "#{ge.message}"
+      error_message = ge.message
       puts "error_message: #{error_message}"
     end
 
