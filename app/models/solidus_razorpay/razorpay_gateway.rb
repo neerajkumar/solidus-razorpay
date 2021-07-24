@@ -1,5 +1,5 @@
 module SolidusRazorpay
-  class RazorpayGateway < ::Spree::Gateway
+  class RazorpayGateway < ::Spree::PaymentMethod
     preference :key_id, :string
     preference :key_secret, :string
     preference :merchant_name, :string
