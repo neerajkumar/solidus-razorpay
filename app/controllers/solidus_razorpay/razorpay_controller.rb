@@ -7,9 +7,9 @@ module SolidusRazorpay
       response_status = SolidusRazorpay::OrderDecorator.process_razorpayment(razorpay_params, order)
       if response_status == 'captured'
         order.next!
-        @message = Spree.t(:order_processed_successfully)
+        @message = I18n.t('spree.order_processed_successfully')
         @current_order = nil
-        flash.notice = Spree.t(:order_processed_successfully)
+        flash.notice = I18n.t('spree.order_processed_successfully')
         flash['order_completed'] = true
         @error = false
         @redirect_path = spree.order_path(order)
@@ -19,9 +19,9 @@ module SolidusRazorpay
         @message = 'There was an error processing your payment'
         @redirect_path = spree.checkout_state_path(order.state)
       end
-    rescue Spree::Core::GatewayError, StateMachine::InvalidTransition => ge
-      error_message = ge.message
-      puts "error_message: #{error_message}"
+    # rescue Spree::Core::GatewayError, StateMachine::InvalidTransition => ge
+    #   error_message = ge.message
+    #   puts "error_message: #{error_message}"
     end
 
     private
