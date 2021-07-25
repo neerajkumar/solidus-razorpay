@@ -19,9 +19,9 @@ module SolidusRazorpay
         @message = 'There was an error processing your payment'
         @redirect_path = spree.checkout_state_path(order.state)
       end
-    # rescue Spree::Core::GatewayError, StateMachine::InvalidTransition => ge
-    #   error_message = ge.message
-    #   puts "error_message: #{error_message}"
+    rescue Spree::Core::GatewayError, StateMachine::InvalidTransition => ge
+      error_message = ge.message
+      puts "error_message: #{error_message}"
     end
 
     private
