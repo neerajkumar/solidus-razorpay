@@ -23,9 +23,10 @@ module SolidusRazorpay
       true
     end
 
-    def method_type
+    def partial_name
       'razorpay'
     end
+    alias_method :method_type, :partial_name
 
     def purchase(amount, transaction_details, gateway_options={})
       ActiveMerchant::Billing::Response.new(true, 'razorpay success')
