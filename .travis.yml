@@ -2,7 +2,7 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.6.6
+  - 3.0.0p0
 before_install: gem install bundler -v 1.17.3
 script:
   - 'bundle exec rake test_app'
